@@ -1,0 +1,129 @@
+<div class="main-layout">
+    <div class="navigation-panel">
+        <ul class="navigation-list">
+            <li class="navigation-list-item"><a routerLinkActive="active" [routerLink]="['/dashboard']">Проекты</a></li>
+            <li class="navigation-list-item"><a routerLinkActive="active" [routerLink]="['/staff']">Задачи</a></li>
+            <li class="navigation-list-item"><a routerLinkActive="active" [routerLink]="['/user']">Сотрудники</a></li>
+            <li class="navigation-list-item"><a routerLinkActive="active" [routerLink]="['/setting']">Теги</a></li>
+        </ul>
+    </div>
+
+    <div class="main-layout-content-wrap">
+
+
+        <!-- Блок фільтріів -->
+        <div class="sidebar-menu">
+            <div class="user-profile-block">
+                <div class="user-profile-logo">
+                    <img src="../assets/img/user.jpg" alt="">
+                </div>
+                <div class="user-profile-info">
+                    <div class="user-profile-name">{{userData.username}}</div>
+                    <div class="user-profile-email">{{userData.email}}</div>
+                </div>
+                <div class="user-profile-action-block">
+                    <div class="user-profile-action-wrap">
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <a mat-menu-item routerLinkActive="active" [routerLink]="['/staff', userData.user_id]">
+                                <mat-icon>edit</mat-icon>
+                                <span>Редактировать</span>
+                            </a>
+                            <a mat-menu-item routerLinkActive="active" [routerLink]="['/logout']">
+                                <mat-icon>exit_to_app</mat-icon>
+                                <span>Выйти</span>
+                            </a>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-layout-content">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+
+    <!--<header class="app-header navbar">-->
+    <!--<button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>-->
+    <!--<a class="navbar-brand" href="#"></a>-->
+    <!--<button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>&#9776;</button>-->
+    <!--<ul class="nav navbar-nav d-md-down-none">-->
+    <!--<li class="nav-item px-3">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']">Dashboard</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item px-3">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/staff']">Staffs</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item px-3">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/user']">Users</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item px-3">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/setting']">Settings</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--<ul class="nav navbar-nav ml-auto">-->
+
+    <!--<li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">-->
+    <!--<a href class="nav-link dropdown-toggle" dropdownToggle (click)="false">-->
+    <!--<span class="d-md-down-none">{{userData.username}} ({{userData.roleLabel}})</span>-->
+    <!--</a>-->
+    <!--<div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">-->
+    <!--<a class="dropdown-item" routerLinkActive="active" [routerLink]="['/logout']"><i-->
+    <!--class="fa fa-lock"></i> Logout</a>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</header>-->
+
+
+    <!--<div class="app-body">-->
+    <!--<div class="sidebar">-->
+    <!--<nav class="sidebar-nav">-->
+    <!--<ul class="nav">-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i-->
+    <!--class="icon-speedometer"></i> Dashboard </a>-->
+    <!--</li>-->
+    <!--<li class="divider"></li>-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/staff']"><i-->
+    <!--class="icon-user-following"></i> Staffs </a>-->
+    <!--</li>-->
+
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/user']"><i-->
+    <!--class="icon-people"></i> Users </a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/setting']"><i-->
+    <!--class="icon-settings"></i> Settings</a>-->
+    <!--</li>-->
+    <!--<li class="divider"></li>-->
+
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/logout']"><i-->
+    <!--class="icon-lock"></i> Logout</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</nav>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash; Main content &ndash;&gt;-->
+    <!--<main class="main">-->
+    <!--&lt;!&ndash; Breadcrumb &ndash;&gt;-->
+    <!--&lt;!&ndash;<ol class="breadcrumb">&ndash;&gt;-->
+    <!--&lt;!&ndash;<app-breadcrumbs></app-breadcrumbs>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ol>&ndash;&gt;-->
+
+    <!--<div class="container-fluid">-->
+    <!--<router-outlet></router-outlet>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.conainer-fluid &ndash;&gt;-->
+    <!--</main>-->
+    <!--</div>-->
+</div>

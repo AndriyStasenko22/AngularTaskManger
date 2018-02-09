@@ -1,0 +1,46 @@
+// scss-lint:disable QualifyingElement
+hr.transparent {
+  border-top: 1px solid transparent;
+}
+
+
+
+
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Roboto';
+  background-color: #fbfbfb;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  &:hover, &:active, &:focus {
+    color: initial;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+img {
+  height: auto;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
