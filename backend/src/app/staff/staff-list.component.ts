@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import swal, {SweetAlertOptions} from 'sweetalert2';
+import {MatTableDataSource} from '@angular/material';
+
 
 import {StaffDataService} from "../model/staff-data.service";
 import {Staff} from "../model/staff";
@@ -10,8 +12,10 @@ import {StaffService} from "../model/staff.service";
     templateUrl: './staff-list.component.html',
 })
 export class StaffListComponent implements OnInit{
+    private dataSource;
     private _staffs:Staff[];
     private _errorMessage:string;
+    displayedColumns = ['name', 'email', 'role_label', 'options'];
 
     constructor(private _staffDataService:StaffDataService,
                 private _staffService:StaffService,
@@ -26,7 +30,9 @@ export class StaffListComponent implements OnInit{
         this._staffDataService.getAllStaffs()
             .subscribe(
                 staffs => {
-                    this._staffs = staffs
+                    this._staffs = staffs;
+                    this.dataSource = new MatTableDataSource(this._staffs);
+                    console.log(this.dataSource);
                 },
                 error =>  {
                     // unauthorized access
