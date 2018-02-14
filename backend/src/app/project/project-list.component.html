@@ -1,0 +1,59 @@
+<div class="row" *ngIf="_errorMessage">
+  <div class="col-sm-12">
+    <p class="alert alert-danger">{{_errorMessage}}</p>
+  </div>
+</div>
+
+<div class="animated fadeIn" *ngIf="!_projects && !_errorMessage">
+  <span class="spinner"></span>
+</div>
+<div class="animated fadeIn" *ngIf="_projects">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- ПІБ  -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Название</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
+    </ng-container>
+
+    <!-- Email -->
+    <ng-container matColumnDef="short_title">
+      <mat-header-cell *matHeaderCellDef>Краткое название</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span *ngIf="element.short_title == null">(Не указано)</span>
+        <span *ngIf="element.short_title != null">{{element.short_title}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Роль -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Описание</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span *ngIf="element.description == null">(Не указано)</span>
+        <span *ngIf="element.description != null">{{element.description}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Дії над підлеглим -->
+    <ng-container matColumnDef="options">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="viewProject(element)">
+            <mat-icon>edit</mat-icon>
+            <span>Редактировать</span>
+          </button>
+          <button mat-menu-item (click)="confirmDeleteProject(element)">
+            <mat-icon>delete</mat-icon>
+            <span>Удалить</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

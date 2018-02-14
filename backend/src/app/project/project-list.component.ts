@@ -3,38 +3,41 @@ import {Router} from "@angular/router";
 import swal, {SweetAlertOptions} from 'sweetalert2';
 import {MatTableDataSource} from '@angular/material';
 
-
-import {StaffDataService} from "../model/staff-data.service";
-import {Staff} from "../model/staff";
+import {Project} from "../model/project";
+import {ProjectDataService} from "../model/project-data.service";
 import {StaffService} from "../model/staff.service";
 
-@Component({
-    templateUrl: './staff-list.component.html',
-})
-export class StaffListComponent implements OnInit {
-    private dataSource;
-    private _staffs: Staff[];
-    private _errorMessage: string;
-    displayedColumns = ['name', 'email', 'role_label', 'options'];
 
-    constructor(private _staffDataService: StaffDataService,
+@Component({
+    templateUrl: './project-list.component.html',
+})
+
+export class ProjectListComponent implements OnInit {
+
+    private _projects: Project[];
+    private _errorMessage: string;
+    private dataSource;
+    private displayedColumns = ['title', 'short_title', 'description', 'options'];
+    constructor(private _projectsDataService: ProjectDataService,
                 private _staffService: StaffService,
                 private _router: Router) {
     }
 
     ngOnInit() {
-        this.getStaffs();
+        this.getProjects();
     }
 
-    public getStaffs() {
-        this._staffs = null;
-        this._staffDataService.getAllStaffs()
+    public getProjects() {
+        this._projects = null;
+        this._projectsDataService.getAllProjects()
             .subscribe(
-                staffs => {
-                    this._staffs = staffs;
-                    this.dataSource = new MatTableDataSource(this._staffs);
+                projects => {
+                    this._projects = projects;
+                    this.dataSource = new MatTableDataSource(this._projects);
+                    console.log(this._projects);
                 },
                 error => {
+                    // unauthorized access
                     if (error.status == 401 || error.status == 403) {
                         this._staffService.unauthorizedAccess(error);
                     } else {
@@ -44,15 +47,15 @@ export class StaffListComponent implements OnInit {
             );
     }
 
-    public viewStaff(staff: Staff): void {
-        this._router.navigate(['/staff', staff.id]);
+    public viewProject(project: Project): void {
+        this._router.navigate(['/project', project.id]);
     }
 
-    public confirmDeleteStaff(staff: Staff): void {
+
+    public confirmDeleteProject(project:Project):void {
         // Due to sweet alert scope issue, define as function variable and pass to swal
 
         let parent = this;
-        // let getStaffs = this.getStaffs;
         this._errorMessage = '';
 
         swal({
@@ -66,15 +69,15 @@ export class StaffListComponent implements OnInit {
             confirmButtonText: 'Yes, delete it!',
             preConfirm: function () {
                 return new Promise(function (resolve, reject) {
-                    parent._staffDataService.deleteStaffById(staff.id)
+                    parent._projectsDataService.deleteProjectById(project.id)
                         .subscribe(
                             result => {
-                                parent.getStaffs();
+                                parent.getProjects();
                                 resolve();
                             },
-                            error => {
+                            error =>  {
                                 // unauthorized access
-                                if (error.status == 401 || error.status == 403) {
+                                if(error.status == 401 || error.status == 403) {
                                     parent._staffService.unauthorizedAccess(error);
                                 } else {
                                     parent._errorMessage = error.data.message;
@@ -85,10 +88,10 @@ export class StaffListComponent implements OnInit {
                         );
                 })
             }
-        }).then(function (result) {
+        }).then(function(result) {
             // handle confirm, result is needed for modals with input
 
-        }, function (dismiss) {
+        }, function(dismiss) {
             // dismiss can be "cancel" | "close" | "outside"
         });
     }

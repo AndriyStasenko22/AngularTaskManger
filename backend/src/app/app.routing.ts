@@ -37,6 +37,10 @@ export const routes: Routes = [
             {
                 path: 'setting',
                 loadChildren: 'app/setting/setting.module#SettingModule'
+            },
+            {
+                path: 'project',
+                loadChildren: 'app/project/project.module#ProjectModule'
             }
         ]
     },

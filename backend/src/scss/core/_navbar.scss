@@ -105,36 +105,3 @@
 
 
 
-// мої стилі для блока навігації
-
-.navigation-panel {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 50px;
-  padding: 0 20px;
-  background-color: $navigation-panel-color;
-}
-
-.navigation-list {
-  font-size: 0;
-  .navigation-list-item {
-    display: inline-block;
-    &:nth-child(n+1){
-      margin-right: 15px;
-    }
-    a {
-      font: 14px 'Roboto';
-      color: $navigation-item-color;
-      letter-spacing: 0.3px;
-      &:hover, &.active {
-        color: $navigation-active-item-color;
-        font-family: 'Roboto-Medium';
-      }
-    }
-  }
-}
-
-
-

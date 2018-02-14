@@ -1,0 +1,407 @@
+// Кольори кнопок
+
+$btn-success-color: #53c07e; // колір кнопки "Создать задачу"
+$btn-primary-color: #42a5f5; // колір кнопки "Прикрепить файл"
+$btn-cancel-color: #e0e0e0; // колір кнопки "Закрыть"
+$btn-create-color: #9db8e9; // колір кнопки "Создать (+)"
+
+// Кольори тегів
+
+$urgently-tag-color: #ff5252; // колір тега "Срочно"
+$underway-tag-color: #aeea00; // колір тега "На согласовании"
+$agreement-tag-color: #ffd54f; // колір тега "В работе"
+
+//Базові кольори
+
+$layout-color: #dde0e4; // колір фону
+$filter-panel-color: #444c5e; // колір блоку фільтрів, блоку користувача
+
+//Кольори меню
+$sidebar-menu-color: #505a6c; // колір меню, блока пошуку
+$sidebar-title-list-color: #394153; // колір заголовка списка меню, активного пункта меню
+$search-placeholder-color: #a7b3cb; // колір текста в полі пошука
+$sidebar-list-color: #3d4659; // колір списка меню
+
+//Кольори навігаційної панелі
+$navigation-panel-color: #3e4759; // колір навігаційної панелі
+$navigation-item-color: #d2d7dc; // колір пунктів навігації
+$navigation-active-item-color: #b2caf6; // колір активного пункта навігації
+
+// Колір завдання
+$task-bag-color: #fdfdfd;
+
+// Мої стилі
+
+//Базовий шаблон
+
+.main-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.main-layout-content-wrap {
+  display: flex;
+  align-items: flex-start;
+  height: calc(100% - 50px);
+}
+
+.main-layout-content {
+  width: calc(100% - 330px);
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.button-success, .button-primary, .button-cancel {
+  height: 37px;
+  border-radius: 4px;
+  padding: 0 22px;
+  font: 14px "Roboto-Medium";
+  line-height: 37px;
+  text-align: center;
+  outline: none !important;
+  border: none !important;
+  display: inline-block;
+  text-decoration: none !important;
+  .mat-button-wrapper {
+    color: #ffffff;
+  }
+}
+
+.mat-menu-item a {
+  color: inherit;
+}
+
+.button-success {
+  background-color: #53c07e;
+  color: #ffffff;
+}
+
+.button-success:hover {
+  color: #ffffff;
+  background-color: #35915a;
+}
+
+.button-primary {
+  background-color: #42a5f5;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  color: #ffffff;
+  background-color: #0c80df;
+}
+
+.button-cancel {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+.button-cancel:hover {
+  color: #333333;
+  background-color: #bababa;
+}
+
+.authorization-layout {
+  min-height: 100vh;
+  //height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/assets/img/dark-material-bg.jpg') top left/100% 100% no-repeat;
+}
+
+#registration-modal-form, #login-modal-form {
+  opacity: 0;
+  animation: fadeInUp 1s 0.3s forwards;
+}
+
+.ui-common-form {
+  width: 400px;
+  position: relative;
+  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2), 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.ui-common-form-header {
+  height: 130px;
+  width: 100%;
+  color: #ffffff;
+  position: relative;
+  padding: 0 16px 24px;
+  display: block;
+  background-color: #4c576c;
+}
+
+.ui-common-form-header .form-header-title {
+  font: 20px/65px 'Roboto-Bold';
+}
+
+.ui-common-authorization-header {
+  background-color: #fff;
+  padding: 24px;
+  font: 20px "Roboto-Medium";
+  color: rgba(0, 0, 0, 0.87);
+  text-align: center;
+
+}
+
+.ui-common-authorization-header .form-header-title {
+  font: 20px/30px "Roboto-Medium";
+  margin-top: 55px;
+  text-transform: uppercase;
+}
+
+.ui-common-company-logo img {
+  height: 100px;
+}
+
+.form-button-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.form-button-block > * {
+  margin: 0 15px !important;
+}
+
+.ui-common-form-body {
+  background-color: #fff;
+  padding: 24px;
+}
+
+// Мої стилі
+
+.sidebar-menu {
+  height: 100%;
+  background-color: $sidebar-menu-color;
+  width: 330px;
+}
+
+.user-profile-block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 68px;
+  background-color: $filter-panel-color;
+  padding: 11px;
+  position: relative;
+}
+
+.user-profile-logo {
+  margin-right: 9px;
+  img {
+    height: 45px;
+    width: 45px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+}
+
+.user-profile-name {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.user-profile-email {
+  font-size: 12px;
+  color: $navigation-item-color;
+}
+
+.user-profile-action-block {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  .user-profile-action-wrap {
+    position: relative;
+    .mat-button-wrapper {
+      color: #ffffff;
+    }
+  }
+}
+
+.sidebar-menu-list {
+  width: 100%;
+  .sidebar-menu-item-block {
+    width: 100%;
+    &.open {
+      .sidebar-menu-item-title > .fa {
+        transform: rotate(90deg);
+      }
+      & > .sidebar-menu-item-list > li > a {
+        height: 28px;
+      }
+      & .show-other-item-button {
+        height: auto;
+      }
+    }
+    .sidebar-menu-item-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font: 13px "Roboto-Medium";
+      height: 50px;
+      padding: 0 20px;
+      width: 100%;
+      position: relative;
+      color: #ffffff;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      background-color: $sidebar-title-list-color;
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+      transition: background-color 0.3s;
+      .fa {
+        font-size: 16px;
+        -webkit-transition: transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -ms-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.3s;
+        transform-origin: 33%;
+      }
+      .text {
+        vertical-align: middle;
+      }
+      .add-button {
+        color: $btn-create-color;
+        vertical-align: middle;
+        .fa {
+          font-size: 18px;
+          line-height: 1;
+          position: relative;
+          top: 2px;
+          margin-left: 8px;
+        }
+        &:hover {
+          color: darken($btn-create-color, 15%);
+        }
+      }
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        content: '';
+        height: 2px;
+        background-color: #343c4d;
+      }
+      &:hover {
+        background-color: #343c4d;
+      }
+    }
+  }
+}
+
+.sidebar-menu-item-list {
+  background-color: $sidebar-list-color;
+  width: 100%;
+  -webkit-transition: heigth 0.3s;
+  -moz-transition: heigth 0.3s;
+  -ms-transition: heigth 0.3s;
+  -o-transition: heigth 0.3s;
+  transition: heigth 0.3s;
+  & > li {
+    width: 100%;
+    &.active > a {
+      background-color: $sidebar-title-list-color;
+      color: #fff;
+      box-shadow: 0px 0px 0px 2px rgba(4, 10, 23, 0.15);
+    }
+    & > a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      height: 0;
+      color: $navigation-item-color;
+      font-size: 13px;
+      padding: 0 15px;
+      &:hover {
+        color: #fff;
+        background-color: $sidebar-title-list-color;
+      }
+      .sidebar-menu-item-icon {
+        display: inline-block;
+        width: 14px;
+        text-align: center;
+        margin-right: 14px;
+      }
+    }
+  }
+  &.tags-list > li > a .sidebar-menu-item-icon .fa {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+
+  }
+}
+
+.show-other-item-button {
+  width: 100%;
+  text-align: center;
+  height: 0;
+  display: none;
+
+  .show-button {
+    color: #d2d7dc;
+    font: 13px/30px "Roboto-Medium";
+    letter-spacing: 0.3px;
+    .fa {
+      font-size: 10px;
+    }
+  }
+}
+
+// мої стилі для блока навігації
+
+.navigation-panel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  background-color: $navigation-panel-color;
+}
+
+.navigation-list {
+  font-size: 0;
+  .navigation-list-item {
+    display: inline-block;
+    &:nth-child(n+1) {
+      margin-right: 15px;
+    }
+    a {
+      font: 14px 'Roboto';
+      color: $navigation-item-color;
+      letter-spacing: 0.3px;
+      &:hover, &.active {
+        color: $navigation-active-item-color;
+        font-family: 'Roboto-Medium';
+      }
+    }
+  }
+}

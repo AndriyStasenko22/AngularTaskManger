@@ -35,6 +35,8 @@ import {StaffService} from './model/staff.service';
 import {StaffDataService} from './model/staff-data.service';
 import {UserDataService} from './model/user-data.service';
 import {SettingDataService} from './model/setting-data.service';
+import {ProjectDataService} from "./model/project-data.service";
+
 
 @NgModule({
     imports: [
@@ -71,6 +73,7 @@ import {SettingDataService} from './model/setting-data.service';
         SettingDataService,
         StaffDataService,
         UserDataService,
+        ProjectDataService
     ],
     bootstrap: [AppComponent]
 })

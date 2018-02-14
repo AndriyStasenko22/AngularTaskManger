@@ -14,7 +14,7 @@
 }
 
 .text-white .text-muted {
-  color: rgba(255,255,255,.6) !important;
+  color: rgba(255, 255, 255, .6) !important;
 }
 
 .card-header {
@@ -68,6 +68,7 @@
     margin-top: - $input-btn-padding-y-lg;
   }
 }
+
 //
 .card-footer {
 
@@ -188,154 +189,6 @@
 }
 
 .card-placeholder {
-  background: rgba(0,0,0,.025);
+  background: rgba(0, 0, 0, .025);
   border: 1px dashed $gray-300;
-}
-
-
-
-
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-.button-success, .button-primary, .button-cancel {
-  height: 37px;
-  border-radius: 4px;
-  padding: 0 22px;
-  font: 14px "Roboto-Medium";
-  line-height: 37px;
-  text-align: center;
-  outline: none !important;
-  border: none !important;
-  display: inline-block;
-  text-decoration: none !important;
-}
-.mat-button-wrapper{
-  color: #ffffff;
-}
-.mat-menu-item a{
-  color: inherit;
-}
-.button-success {
-  background-color: #53c07e;
-  color: #ffffff;
-}
-
-.button-success:hover {
-  color: #ffffff;
-  background-color: #35915a;
-}
-
-.button-primary {
-  background-color: #42a5f5;
-  color: #ffffff;
-}
-
-.button-primary:hover {
-  color: #ffffff;
-  background-color: #0c80df;
-}
-
-.button-cancel {
-  background-color: #e0e0e0;
-  color: #333333;
-}
-
-.button-cancel:hover {
-  color: #333333;
-  background-color: #bababa;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.authorization-layout {
-  min-height: 100vh;
-  //height: 100%;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('/assets/img/dark-material-bg.jpg') top left/100% 100% no-repeat;
-}
-
-#registration-modal-form, #login-modal-form {
-  opacity: 0;
-  animation: fadeInUp 1s 0.3s forwards;
-}
-
-.ui-common-form {
-  width: 400px;
-  position: relative;
-  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2), 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12);
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.ui-common-form-header {
-  height: 130px;
-  width: 100%;
-  color: #ffffff;
-  position: relative;
-  padding: 0 16px 24px;
-  display: block;
-  background-color: #4c576c;
-}
-
-.ui-common-form-header .form-header-title {
-  font: 20px/65px 'Roboto-Bold';
-}
-
-.ui-common-authorization-header {
-  background-color: #fff;
-  padding: 24px;
-  font: 20px "Roboto-Medium";
-  color: rgba(0, 0, 0, 0.87);
-  text-align: center;
-
-}
-
-.ui-common-authorization-header .form-header-title {
-  font: 20px/30px "Roboto-Medium";
-  margin-top: 55px;
-  text-transform: uppercase;
-}
-
-.ui-common-company-logo img {
-  height: 100px;
-}
-
-.form-button-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.form-button-block > * {
-  margin: 0 15px !important;
-}
-
-.ui-common-form-body {
-  background-color: #fff;
-  padding: 24px;
 }

@@ -21,10 +21,10 @@
 <!--<tr>-->
 <!--<th class="text-xs-center">ID</th>-->
 <!--<th>Username</th>-->
-<!--<th>Email Address<br >(Confirmed At)</th>-->
+<!--<th>Email Address<br>(Confirmed At)</th>-->
 <!--<th width="15%" class="text-xs-center">Last Login</th>-->
 
-<!--<th width="15%" class="text-xs-center">Status<br />(Last Updated At)</th>-->
+<!--<th width="15%" class="text-xs-center">Status<br/>(Last Updated At)</th>-->
 <!--<th width="20%" class="text-xs-center">Functions</th>-->
 <!--</tr>-->
 <!--</thead>-->
@@ -39,16 +39,18 @@
 <!--<td>-->
 <!--<p *ngIf="staff.confirmed_at == null">-->
 <!--{{staff.unconfirmed_email}}-->
-<!--<br /><span class="help-text text-danger">(Not Confirmed)</span>-->
+<!--<br/><span class="help-text text-danger">(Not Confirmed)</span>-->
 <!--</p>-->
 <!--<p *ngIf="staff.confirmed_at != null">-->
 <!--{{staff.email}}-->
-<!--<br /><span class="help-text" title="{{staff.confirmed_at}}">({{staff.confirmed_at | amTimeAgo}})</span>-->
+<!--<br/><span class="help-text" title="{{staff.confirmed_at}}">({{staff.confirmed_at | amTimeAgo}})</span>-->
 <!--</p>-->
 <!--</td>-->
 <!--<td class="text-xs-center">-->
 <!--<span *ngIf="staff.last_login_ip == null" class="help-text">Never Logged In</span>-->
-<!--<p *ngIf="staff.last_login_ip != null" class="help-text" title="{{staff.last_login_at}}">{{staff.last_login_ip}}<br />({{staff.last_login_at | amTimeAgo}})</p>-->
+<!--<p *ngIf="staff.last_login_ip != null" class="help-text"-->
+<!--title="{{staff.last_login_at}}">{{staff.last_login_ip}}<br/>({{staff.last_login_at-->
+<!--| amTimeAgo}})</p>-->
 <!--</td>-->
 <!--&lt;!&ndash;<td class="text-xs-center">&ndash;&gt;-->
 <!--&lt;!&ndash;<span *ngIf="staff.blocked_at == null" class="help-text text-success">Not Blocked</span>&ndash;&gt;-->
@@ -62,10 +64,11 @@
 <!--'text-danger': staff.status == 0 || staff.status == -1-->
 <!--}">{{staff.status_label}}</span>-->
 
-<!--<br /><span class="help-text" title="{{staff.updated_at}}">({{staff.updated_at | amTimeAgo}})</span>-->
+<!--<br/><span class="help-text" title="{{staff.updated_at}}">({{staff.updated_at | amTimeAgo}})</span>-->
 <!--</div>-->
 <!--<div *ngIf="staff.blocked_at != null">-->
-<!--<span *ngIf="staff.blocked_at != null" class="text-danger" title="{{staff.blocked_at}}">Blocked since {{staff.blocked_at | amTimeAgo}}</span>-->
+<!--<span *ngIf="staff.blocked_at != null" class="text-danger"-->
+<!--title="{{staff.blocked_at}}">Blocked since {{staff.blocked_at | amTimeAgo}}</span>-->
 <!--</div>-->
 
 <!--</td>-->
@@ -74,7 +77,8 @@
 <!--<button class="btn btn-primary btn-sm" type="button" (click)="viewStaff(staff)">-->
 <!--<i class="fa fa-edit"></i> Edit-->
 <!--</button>-->
-<!--<button class="btn btn-danger btn-sm" type="button" (click)="confirmDeleteStaff(staff)">-->
+<!--<button class="btn btn-danger btn-sm" type="button"-->
+<!--(click)="confirmDeleteStaff(staff)">-->
 <!--<i class="fa fa-remove"></i> Remove-->
 <!--</button>-->
 <!--</div>-->
@@ -85,59 +89,70 @@
 <!--</div>-->
 <!--</div>-->
 <!--<div class="card-footer">-->
-<!--<a class="btn btn-primary btn-sm" [routerLink]="['/staff', 'create']" routerLinkActive="active"><i class="fa fa-plus-square"></i> Create New Staff</a>-->
+<!--<a class="btn btn-primary btn-sm" [routerLink]="['/staff', 'create']" routerLinkActive="active"><i-->
+<!--class="fa fa-plus-square"></i> Create New Staff</a>-->
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
 
-<mat-table #table [dataSource]="dataSource">
+<div class="row" *ngIf="_errorMessage">
+    <div class="col-sm-12">
+        <p class="alert alert-danger">{{_errorMessage}}</p>
+    </div>
+</div>
 
-    <!-- Position Column -->
-    <!--<ng-container matColumnDef="position">-->
-    <!--<mat-header-cell *matHeaderCellDef> No. </mat-header-cell>-->
-    <!--<mat-cell *matCellDef="let element"> {{element.}} </mat-cell>-->
-    <!--</ng-container>-->
+<div class="animated fadeIn" *ngIf="!_staffs && !_errorMessage">
+    <span class="spinner"></span>
+</div>
+<div class="animated fadeIn" *ngIf="_staffs">
+    <mat-table #table [dataSource]="dataSource">
+        <!-- ПІБ  -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>ПІБ</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+        </ng-container>
 
-    <!-- ПІБ  -->
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> ПІБ</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.username}}</mat-cell>
-    </ng-container>
+        <!-- Email -->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.email == null">(Не указан)</span>
+                <span *ngIf="element.email != null">{{element.email}}</span>
+            </mat-cell>
+        </ng-container>
 
-    <!-- Email -->
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> E-mail</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
-    </ng-container>
+        <!-- Роль -->
+        <ng-container matColumnDef="role_label">
+            <mat-header-cell *matHeaderCellDef>Роль</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.role_label == null">(Не указана)</span>
+                <span *ngIf="element.role_label != null">{{element.role_label}}</span>
+            </mat-cell>
+        </ng-container>
 
-    <!-- Роль -->
-    <ng-container matColumnDef="role_label">
-        <mat-header-cell *matHeaderCellDef> Роль</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.role_label}}</mat-cell>
-    </ng-container>
-
-    <!-- Дії над підлеглим -->
-    <ng-container matColumnDef="options">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="viewStaff(element)">
-                    <mat-icon>edit</mat-icon>
-                    <span>Редактировать</span>
+        <!-- Дії над підлеглим -->
+        <ng-container matColumnDef="options">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
                 </button>
-                <button mat-menu-item (click)="confirmDeleteStaff(element)">
-                    <mat-icon>delete</mat-icon>
-                    <span>Удалить</span>
-                </button>
-            </mat-menu>
-        </mat-cell>
-    </ng-container>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="viewStaff(element)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Редактировать</span>
+                    </button>
+                    <button mat-menu-item (click)="confirmDeleteStaff(element)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Удалить</span>
+                    </button>
+                </mat-menu>
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

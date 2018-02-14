@@ -104,6 +104,18 @@ $config = [
                     ]
                 ],
                 [
+                    'class'         => 'yii\rest\UrlRule',
+                    'controller'    => 'v1/project',
+                    'pluralize'     => false,
+                    'tokens'        => [
+                        '{id}'             => '<id:\d+>',
+                    ],
+                    'extraPatterns' => [
+                        'GET public'       =>  'public',
+                        'OPTIONS public'    =>  'options',
+                    ]
+                ],
+                [
 	                'class'         => 'yii\rest\UrlRule',
 	                'controller'    => 'v1/page',
 	                'pluralize'     => false,

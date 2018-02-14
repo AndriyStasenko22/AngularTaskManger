@@ -391,24 +391,3 @@ app-root {
     }
   }
 }
-
-// Мої стилі
-
-//Базовий шаблон
-
-.main-layout {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.main-layout-content-wrap {
-  display: flex;
-  align-items: flex-start;
-  height: calc(100% - 50px);
-}
-
-.main-layout-content {
-  width: calc(100% - 330px);
-}
